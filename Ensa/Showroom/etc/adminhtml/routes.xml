@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @author Amasty Team
+* @copyright Copyright (c) 2022 Amasty (https://www.amasty.com)
+* @package Advanced Conditions for Magento 2 (System)
+*/-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="order_subcompany" frontName="order_subcompany">
+            <module name="Ensa_Showroom"/>
+        </route>
+    </router>
+</config>

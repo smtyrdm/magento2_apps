@@ -1,0 +1,5 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_order_save_after">
+        <observer name="update_sales_order_grid_order_subcompany" instance="Ensa\Showroom\Observer\UpdateOrderGrid" />
+    </event>
+</config>

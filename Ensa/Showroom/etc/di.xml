@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @author Amasty Team
+* @copyright Copyright (c) 2022 Amasty (https://www.amasty.com)
+* @package Custom Checkout Fields for Magento 2
+*/-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Ensa\Showroom\Ui\Component\Listing\Column\OrderSubcompany">
+        <arguments>
+            <argument name="subCompany" xsi:type="object">Ensa\Showroom\Block\Adminhtml\Order\Create\SubCompany</argument>
+        </arguments>
+    </type>
+</config>

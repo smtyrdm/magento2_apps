@@ -1,0 +1,76 @@
+<?php if (!$block->getRemoteIp()){?>
+
+    <section class="admin__page-section">
+        <div class="admin__page-section-title" style="display: flex; align-items: center;">
+        <span class="title">
+              <?php /* @escapeNotVerified */ echo __('Sub Company') ?>
+        </span>
+            <div id="checkoutfield-edit-link" class="actions block-edit-link">
+                <a href="#"
+                   id="edit-checkoutfield-info">
+                    <?= $block->escapeHtml(__('Edit')); ?>
+                </a>
+            </div>
+        </div>
+        <div class="admin__page-section-content">
+            <div class="order-information textfied" id="fieldsubcompanyresponse">
+                <div class="box">
+                    <div class="box-content">
+                        <span id="subcompany-info"><?= $block->getSubcompanyLabel();?></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="admin__page-section-item-content edit-checkoutfield-date" id="edit-checkoutfield-info-form"
+             style="display: none;">
+            <fieldset class="admin__fieldset">
+                <input type="hidden" id="orderid" value="<?php
+                $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                $request = $objectManager->get('Magento\Framework\App\Request\Http');
+                echo $order_id = $request->getParam('order_id');?>"/>
+            </fieldset>
+
+            <select name="order_subcompany_select" id="order_subcompany" class="admin__control-select" required>
+                <?php $options = $block->getSubCompanyData(); ?>
+                <?php foreach ($options as $option){?>
+                    <option value="<?= $option['value'];?>" <?= ($block->getSubcompany() ==  $option['value'] ? "selected" : "") ?> ><?= $option['label'];?></option>
+                <?php }?>
+            </select>
+        </div>
+    </section>
+    <script type="text/javascript">
+        require([
+            'jquery',
+            'mage/validation',
+            'mage/translate',
+            'jquery/ui'
+        ], function ($) {
+
+            $('#edit-checkoutfield-info').on('click', function (e) {
+                e.preventDefault();
+                $('#edit-checkoutfield-info-form').toggle();
+                $('#subcompany-info').hide();
+            });
+
+            $("#order_subcompany").change(function() {
+                var orderid = $('#orderid').val();
+                var order_subcompany_text = $("#order_subcompany option:selected").text();
+                var url = '<?= /** @noEscape */ $block->getUrl("order_subcompany/queue/update")?>';
+
+                $.ajax({
+                    url: url,
+                    data: { orderid: orderid, order_subcompanyvalue: $(this).val() },
+                    type: "POST",
+                    success: function () {
+                        $("#subcompany-info").text("Seçim başarılı: " + order_subcompany_text).show();
+                        $("#edit-checkoutfield-info-form").hide();
+                    }
+                });
+            });
+        });
+    </script>
+
+
+    <?php
+}
+?>

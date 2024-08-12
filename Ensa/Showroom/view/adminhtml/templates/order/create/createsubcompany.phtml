@@ -1,0 +1,21 @@
+<section class="admin__page-section">
+
+    <div class="admin__page-section-title">
+
+        <span class="title"><?php /* @escapeNotVerified */ echo __('Sub Company') ?></span>
+
+    </div>
+
+    <div class="admin__page-section-content">
+
+        <div class="admin__page-section-item-content edit-checkoutfield-date" id="edit-checkoutfield-info-form">
+            <select name="order_subcompany_select" id="order_subcompany" class="admin__control-select" required>
+                <?php $options = $block->getSubCompanyData(); ?>
+                <?php foreach ($options as $option){?>
+                    <option value="<?= $option['value'];?>"><?= $option['label'];?></option>
+                <?php }?>
+            </select>
+        </div>
+    </div>
+
+</section>
