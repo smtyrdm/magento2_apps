@@ -56,6 +56,7 @@ class SubCompany extends Template
             ['value' => 'company_dakik_07_pazarlama', 'label' => __('Antalya Pazarlama')],
             ['value' => 'dmo', 'label' => __('DMO')],
             ['value' => 'trendyol', 'label' => __('Trendyol')],
+            ['value' => 'hepsiburada', 'label' => __('Hepsiburada')],
         ];
     }
 
