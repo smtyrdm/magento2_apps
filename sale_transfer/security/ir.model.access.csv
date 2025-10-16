@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_sale_transfer_package,sale.transfer.package,model_sale_transfer_package,base.group_user,1,1,1,1
-access_sale_transfer_package_line,sale.transfer.package.line,model_sale_transfer_package_line,,1,1,1,1
-access_sale_batch_transfer_wiz,sale.batch.transfer.wiz,model_sale_batch_transfer_wiz,,1,1,1,1
-access_stock_picking_export_wiz,access_stock_picking_export_wiz,model_stock_picking_export_wiz,,1,1,1,1
