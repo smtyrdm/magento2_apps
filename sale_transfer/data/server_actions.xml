@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_stock_picking_export_wiz_form" model="ir.ui.view">
+        <field name="name">stock.picking.export.wiz.form</field>
+        <field name="model">stock.picking.export.wiz</field>
+        <field name="arch" type="xml">
+            <form string="IDS Export">
+                <group>
+                    <field name="excel_filename" readonly="1"/>
+                    <field name="excel_file" invisible="1"/>
+                </group>
+                <footer>
+                    <button name="action_download_excel" string="Download CSV" type="object" class="btn-primary"
+                            attrs="{'invisible': [('excel_file','=',False)]}"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+    <record id="action_open_sale_transfer" model="ir.actions.server">
+        <field name="name">Sale Transfer</field>
+        <field name="model_id" ref="sale.model_sale_order_line"/>
+        <field name="binding_model_id" ref="sale.model_sale_order_line"/>
+        <field name="state">code</field>
+        <field name="binding_view_types">list</field>
+        <field name="code">action = records.action_sale_transfer()</field>
+    </record>
+
+    <record id="action_ids_export" model="ir.actions.server">
+        <field name="name">IDS Export</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="binding_model_id" ref="stock.model_stock_picking"/>
+        <field name="state">code</field>
+        <field name="binding_view_types">form,list</field>
+        <field name="code">action = records.action_ids_export()</field>
+    </record>
+</odoo>
